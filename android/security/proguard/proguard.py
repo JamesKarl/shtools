@@ -1,4 +1,5 @@
-import os, os.path
+import os
+import os.path
 
 # ANDROID
 ANDROID_SDK_ROOT = r'D:\\devenv\\android\\sdk\\'
