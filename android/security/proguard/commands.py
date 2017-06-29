@@ -25,8 +25,11 @@ def reverse_apk(apk_file_path, output_directory):
     if not os.path.exists(output_directory):
         os.mkdir(output_directory)
 
-    cmd = COMMAND_APK_TOOL + " d -f " + apk_file_path + " " + output_directory
+    cwd = os.getcwd()
+    os.chdir(output_directory)
+    cmd = COMMAND_APK_TOOL + " d -f " + apk_file_path + " " + os.path.basename(apk_file_path)
     run(cmd)
+    os.chdir(cwd)
 
 
 def check_apk_sign(apk_file_path):
@@ -37,3 +40,6 @@ def check_apk_sign(apk_file_path):
     cmd = r"jarsigner -verify -certs -verbose " + apk_file_path
     run(cmd)
 
+
+def dex2jar(dex_files):
+    pass
