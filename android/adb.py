@@ -18,7 +18,11 @@ def start_activity(params, activity=".visit.offline.ui.Base64ImageCategoryListAc
 
 
 def main():
-    start_activity({"BUSINESS_ID": "4f301e41b78340f38cfc970dcef7e7a9"})
+    #店铺陈列
+    #start_activity({"BUSINESS_ID": "4f301e41b78340f38cfc970dcef7e7a9"})
+
+    #喜庆活动
+    start_activity({"BUSINESS_ID": "ace8a08a8feb4df5af1a07ada9a4113a"}, ".visit.offline.ui.Base64ImageListActivity")
 
 
 if __name__ == '__main__':
