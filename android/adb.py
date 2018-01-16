@@ -17,15 +17,44 @@ def start_activity(params, activity=".visit.offline.ui.Base64ImageCategoryListAc
     run(ADB + "shell am start -W " + extras + " -n " + package + "/" + activity)
 
 
-def main():
-    #店铺陈列
-    #start_activity({"-e BUSINESS_ID": "4f301e41b78340f38cfc970dcef7e7a9"})
+def show_store(business_id):
+    start_activity(["-e BUSINESS_ID " + business_id])
 
-    #喜庆活动
-    start_activity(["-e BUSINESS_ID ace8a08a8feb4df5af1a07ada9a4113a",
+
+def show_celebration(celebration_id, editable):
+    start_activity(["-e BUSINESS_ID " + celebration_id,
                     "-e BUSINESS_TYPE CELEBRATION",
-                    "--ez EDITABLE true"
+                    "-e SUBTYPE_NAME 图片",
+                    "--ez EDITABLE " + editable
                     ], ".visit.offline.ui.Base64ImageListActivity")
+
+
+def show_feedback():
+    start_activity([
+        "--ei FRAGMENT_ID 1",
+        "-e TITLE 意见反馈",
+        "-e DOC_ID xx"
+    ], "com.wiseda.hbzy.HubActivity", "com.wiseda.hbzy.mini")
+
+
+def show_chat_activity():
+    start_activity([
+        #"-e oppositeUid CS1",
+        #"-e oppositeName 测试员1",
+        "-e oppositeUid kejun",
+        "-e oppositeName 柯军",
+        "--ei chatType 0"
+    ], ".chat.activity.ChatActivity")
+
+
+def main():
+    # 店铺陈列
+    #show_store("b67c8b04c461499ebd549a15f23b5261")
+    #show_feedback()
+    show_chat_activity()
+
+    # 喜庆活动
+    #show_celebration("ace8a08a8feb4df5af1a07ada9a4113a", "true")
 
 
 if __name__ == '__main__':
